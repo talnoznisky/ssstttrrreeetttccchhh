@@ -1,19 +1,71 @@
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#container {
+    margin: 5px 0 0 5px;
+}
+body {
+    height: 100%;
+    width: 100%;
+}
+table {
+    width: 50%;
+    display: flex;
+}
+tr, td {
+    width: 100%;
+    margin: 5px 0 5px 0;
+}
+textarea {
+    width: 35vw;
+    height: 10vh;
+    margin: 5px 0 5px 0;
+}
 
-<form id='form'>
-    String
-    <input type="textarea" name="string" value="" />
-    <br />
-    Repeats:
-    <input type="number" id="repeats" name="repeats" min="2" max="1000000">
-    <br />
-    <input type='button' onclick="repeatChar(2,'meow')" value='ssttrreettchh'></input>
-</form>
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        * {
+            font-size: x-large;
+        }
+        #container {
+            width: 95%;    
+        }
+        textarea {
+            width: 100%;
+            height: 40vh
+        
+        }
 
-<textarea id='textarea'></textarea>
-<br />
-<button onclick='copyToClipboard()'>copy</button>
-<button onclick='clearTextArea()'>clear</button>
+    }    
+</style>
+</head>
+<body>
+    <div id='container'>
+        <table>
+            <form id='form'>
+                <tr>
+                    <td>Text:</td>
+                    <td><input type="textarea" name="string" value="example" /></td>
+                </tr>
+                <tr>
+                    <td>Repeats:</td>
+                    <td><input type="number" id="repeats" name="repeats" value=2 min="2" max="1000000"></td>
+                </tr>    
+            </form>
+        </table>
+        <input type='button' onclick="repeatChar()" value='ssstttrrreeetttccchhh'></input>
+        <br/>
+        <textarea id='textarea'>eexxaammppllee</textarea>
+        <br />
+        <button onclick='copyToClipboard()'>copy</button>
+        <button onclick='clearTextArea()'>clear</button>
+    </div>
+</body>
 <script>
 
 getInputs = () => {
