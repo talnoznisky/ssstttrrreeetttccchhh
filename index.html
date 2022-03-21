@@ -1,7 +1,9 @@
 <html>
 <head>
+<title>ssstttrrreeetttccchhh.com</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8">
+<link rel="icon" href='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐛</text></svg>'/>
 <style>
 *{
     margin: 0;
@@ -99,17 +101,17 @@ textarea {
             <form id='form'>
                 <tr>
                     <td>Text:</td>
-                    <td><input type="textarea" name="string" value="example" /></td>
+                    <td><input class="clearable" type="textarea" name="string" value="example" /></td>
                 </tr>
                 <tr>
                     <td>Repeats:</td>
-                    <td><input type="number" id="repeats" name="repeats" value=2 min="2" max="100000"></td>
+                    <td><input class="clearable" type="number" id="repeats" name="repeats" value=2 min="2" max="100000"></td>
                 </tr>    
             </form>
         </table>
         <button onclick="repeatChar()">ssstttrrreeetttccchhh</button>
         <br/>
-        <textarea id='textarea' readonly>eexxaammppllee</textarea>
+        <textarea id='textarea' class="clearable" readonly>eexxaammppllee</textarea>
         <br />
         <button onclick='copyToClipboard()'>copy</button>
         <button onclick='clearTextArea()'>clear</button>
@@ -133,11 +135,8 @@ window.onclick = function(event) {
     }
 }
 
-
-
 getInputs = () => {
-    form = document.getElementById('form')
-    elements = form.elements;
+    elements = document.getElementById('form').elements;
     return {
         'input_str': elements['string'].value,
         'repeats': elements['repeats'].value
@@ -145,21 +144,11 @@ getInputs = () => {
 }
 
 clearTextArea = () => {
-    text_area = document.getElementById('textarea')
-    form = document.getElementById('form')
-    elements = form.elements
-    string = elements['string']
-    repeats = elements['repeats']
-
-    text_area.value = ''
-    string.value = ''
-    repeats.value = ''
-    
+    [...document.getElementsByClassName('clearable')].forEach(elem => elem.value = '')
 }
 
 fillTextArea = (str) => {
-    text_area = document.getElementById('textarea')
-    text_area.value = str
+    document.getElementById('textarea').value = str
 }
 
 repeatChar = () => {
@@ -175,8 +164,7 @@ repeatChar = () => {
 }
 
 copyToClipboard = () => {
-    text = document.getElementById('textarea')
-    text.select()
+    document.getElementById('textarea').select()
     document.execCommand('copy')
 }
 </script>
